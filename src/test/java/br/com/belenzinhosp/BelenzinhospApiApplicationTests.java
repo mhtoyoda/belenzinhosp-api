@@ -1,4 +1,4 @@
-package br.com.belenzinhospapi;
+package br.com.belenzinhosp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

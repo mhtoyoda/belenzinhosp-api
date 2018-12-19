@@ -1,4 +1,4 @@
-package br.com.belenzinhospapi;
+package br.com.belenzinhosp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
