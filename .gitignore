@@ -37,6 +37,8 @@
 # .idea/*.iml
 # .idea/modules
 
+target/
+
 # CMake
 cmake-build-*/
 
