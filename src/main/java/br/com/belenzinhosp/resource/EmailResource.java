@@ -14,9 +14,9 @@ public class EmailResource {
     @Autowired
     private EmailService emailService;
 
-    @PostMapping(path = "/api/email")
+    @PostMapping("/api/email")
     public ResponseEntity<String> email(@RequestBody Email email){
-        boolean sentEmail = emailService.sendEmail(email.getEmail(), email.getSubject(), email.getText());
+        boolean sentEmail = emailService.sendEmail(email.getEmail(), email.getSubject(), email.getMessage());
         if(sentEmail){
             return ResponseEntity.ok("OK");
         }

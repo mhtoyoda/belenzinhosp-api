@@ -3,7 +3,7 @@ package br.com.belenzinhosp.model;
 public class Email {
 
     private String subject;
-    private String text;
+    private String message;
     private String email;
 
     public String getSubject() {
@@ -14,12 +14,12 @@ public class Email {
         this.subject = subject;
     }
 
-    public String getText() {
-        return text;
+    public String getMessage() {
+        return message;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getEmail() {

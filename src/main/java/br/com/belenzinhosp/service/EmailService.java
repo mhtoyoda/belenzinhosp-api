@@ -23,7 +23,7 @@ public class EmailService {
         message.setTo(emailTo);
         message.setSubject(subject);
         message.setSentDate(new Date());
-        message.setFrom("marcelo.toyoda@koin.com.br");
+        message.setFrom(email);
         try {
             mailSender.send(message);
             return true;
