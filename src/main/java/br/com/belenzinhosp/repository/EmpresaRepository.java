@@ -1,0 +1,10 @@
+package br.com.belenzinhosp.repository;
+
+import br.com.belenzinhosp.model.Empresa;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface EmpresaRepository extends CrudRepository<Empresa, Integer> {
+
+}
