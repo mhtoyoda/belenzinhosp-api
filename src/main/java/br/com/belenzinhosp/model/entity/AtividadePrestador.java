@@ -1,18 +1,18 @@
-package br.com.belenzinhosp.model;
+package br.com.belenzinhosp.model.entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tipo_comercio")
-public class TipoComercio {
+@Table(name = "ativ_prestador")
+public class AtividadePrestador {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_com")
+    @Column(name = "id_ativ_prest")
     private Integer id;
 
-    @Column(name = "com_nome")
+    @Column(name = "nome_ativ_prest")
     private String name;
 
     public Integer getId() {

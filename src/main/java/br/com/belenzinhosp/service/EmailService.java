@@ -21,7 +21,7 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setText("Email FROM: "+email +" - "+text);
         message.setTo(emailTo);
-        message.setSubject(subject);
+        message.setSubject("PORTAL BELENZINHOSP - "+subject);
         message.setSentDate(new Date());
         message.setFrom(email);
         try {

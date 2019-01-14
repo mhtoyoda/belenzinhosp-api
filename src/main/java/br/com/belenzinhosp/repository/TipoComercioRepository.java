@@ -1,6 +1,6 @@
 package br.com.belenzinhosp.repository;
 
-import br.com.belenzinhosp.model.TipoComercio;
+import br.com.belenzinhosp.model.entity.TipoComercio;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

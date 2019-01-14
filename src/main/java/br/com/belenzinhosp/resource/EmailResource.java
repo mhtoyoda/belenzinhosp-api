@@ -15,11 +15,15 @@ public class EmailResource {
     private EmailService emailService;
 
     @PostMapping("/api/email")
-    public ResponseEntity<String> email(@RequestBody Email email){
+    public ResponseEntity<Email> email(@RequestBody Email email){
+        Email emailResponse = new Email();
         boolean sentEmail = emailService.sendEmail(email.getEmail(), email.getSubject(), email.getMessage());
         if(sentEmail){
-            return ResponseEntity.ok("OK");
+            emailResponse.setStatus("OK");
+        }else{
+            emailResponse.setStatus("NOK");
         }
-        return ResponseEntity.ok("NOK");
+
+        return ResponseEntity.ok(emailResponse);
     }
 }

@@ -1,4 +1,4 @@
-package br.com.belenzinhosp.model;
+package br.com.belenzinhosp.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +11,9 @@ public class Empresa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empresa")
     private Integer id;
+
+    @Column(name = "end_empr")
+    private String enderecoEmpresa;
 
     @Column(name = "nome_empr")
     private String nomeEmpresa;
@@ -52,6 +55,14 @@ public class Empresa {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getEnderecoEmpresa() {
+        return enderecoEmpresa;
+    }
+
+    public void setEnderecoEmpresa(String enderecoEmpresa) {
+        this.enderecoEmpresa = enderecoEmpresa;
     }
 
     public String getNomeEmpresa() {

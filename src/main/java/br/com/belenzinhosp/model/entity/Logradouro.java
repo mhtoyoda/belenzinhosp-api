@@ -1,4 +1,4 @@
-package br.com.belenzinhosp.model;
+package br.com.belenzinhosp.model.entity;
 
 import javax.persistence.*;
 
