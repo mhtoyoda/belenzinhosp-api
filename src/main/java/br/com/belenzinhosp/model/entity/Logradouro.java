@@ -9,7 +9,7 @@ public class Logradouro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_logr")
+    @Column(name = "Id_logr")
     private Integer id;
 
     @Column(name = "nome_logr")
