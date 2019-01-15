@@ -3,15 +3,10 @@ package br.com.belenzinhosp.service;
 import br.com.belenzinhosp.model.Result;
 import br.com.belenzinhosp.model.entity.Empresa;
 import br.com.belenzinhosp.repository.EmpresaRepository;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,10 +26,10 @@ public class SearchService {
                 empresas.forEach(empresa -> {
                     Result result = new Result();
                     result.setNome(empresa.getNomeEmpresa());
-                    result.setNomeFantasia(empresa.getNomeResponsavel() != null ? empresa.getNomeResponsavel() : empresa.getNomeEmpresa());
-                    result.setEndereco(empresa.getEnderecoEmpresa());
+                    result.setNomeFantasia(empresa.getNomeEmpresa());
+                    result.setEndereco(getEndereco(empresa.getNomeLogradouro(), empresa.getNumero()));
                     result.setTelefone(empresa.getTelefone1() != null ? empresa.getTelefone1() : empresa.getTelefone2());
-                    result.setHorarioAbertura(getDateTime(empresa.getHoraAbertura()));
+                    result.setHorarioAbertura(empresa.getHoraAbertura() != null ? empresa.getHoraAbertura() : "");
                     result.setHorarioFechamento(empresa.getHoraFechamento() != null ? empresa.getHoraFechamento() : "");
                     result.setUrl(empresa.getWebsiteEmpresa() != null ? empresa.getWebsiteEmpresa() : "");
                     results.add(result);
@@ -44,14 +39,8 @@ public class SearchService {
         return results;
     }
 
-    private String getDateTime(Date date){
-        if(date != null){
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            LocalDateTime localDateTime = LocalDateTime.parse(dateFormat.format(date), formatter);
-            return String.format("%s:%s", StringUtils.leftPad(String.valueOf(localDateTime.getHour()), 2, "0"),
-                    StringUtils.rightPad(String.valueOf(localDateTime.getMinute()), 2, "0"));
-        }
-        return "";
+    private String getEndereco(String logradouro, String numero){
+        String[] logradouros = logradouro.split(",");
+        return String.format("%s %s, %s", logradouros[1], logradouros[0], numero);
     }
 }

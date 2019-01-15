@@ -1,7 +1,6 @@
 package br.com.belenzinhosp.model.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "empresas")
@@ -9,13 +8,10 @@ public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_empresa")
+    @Column(name = "Identificação")
     private Integer id;
 
-    @Column(name = "end_empr")
-    private String enderecoEmpresa;
-
-    @Column(name = "nome_empr")
+    @Column(name = "nfantasia_empr")
     private String nomeEmpresa;
 
     @Column(name = "nome_resp")
@@ -30,8 +26,11 @@ public class Empresa {
     @Column(name = "website_empr")
     private String websiteEmpresa;
 
-    @Column(name = "tipo_empr")
-    private String tipoEmpresa;
+    @Column(name = "fb_empr")
+    private String fbEmpresa;
+
+    @Column(name = "nome_ativ_com")
+    private String nomeAtividadeComercial;
 
     @Column(name = "tel1_empr")
     private String telefone1;
@@ -39,9 +38,8 @@ public class Empresa {
     @Column(name = "tel2_empr")
     private String telefone2;
 
-    @Column(name = "abre_empr", columnDefinition="DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date horaAbertura;
+    @Column(name = "abre_empr")
+    private String horaAbertura;
 
     @Column(name = "fecha_empr")
     private String horaFechamento;
@@ -55,14 +53,6 @@ public class Empresa {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getEnderecoEmpresa() {
-        return enderecoEmpresa;
-    }
-
-    public void setEnderecoEmpresa(String enderecoEmpresa) {
-        this.enderecoEmpresa = enderecoEmpresa;
     }
 
     public String getNomeEmpresa() {
@@ -105,12 +95,20 @@ public class Empresa {
         this.websiteEmpresa = websiteEmpresa;
     }
 
-    public String getTipoEmpresa() {
-        return tipoEmpresa;
+    public String getFbEmpresa() {
+        return fbEmpresa;
     }
 
-    public void setTipoEmpresa(String tipoEmpresa) {
-        this.tipoEmpresa = tipoEmpresa;
+    public void setFbEmpresa(String fbEmpresa) {
+        this.fbEmpresa = fbEmpresa;
+    }
+
+    public String getNomeAtividadeComercial() {
+        return nomeAtividadeComercial;
+    }
+
+    public void setNomeAtividadeComercial(String nomeAtividadeComercial) {
+        this.nomeAtividadeComercial = nomeAtividadeComercial;
     }
 
     public String getTelefone1() {
@@ -129,11 +127,11 @@ public class Empresa {
         this.telefone2 = telefone2;
     }
 
-    public Date getHoraAbertura() {
+    public String getHoraAbertura() {
         return horaAbertura;
     }
 
-    public void setHoraAbertura(Date horaAbertura) {
+    public void setHoraAbertura(String horaAbertura) {
         this.horaAbertura = horaAbertura;
     }
 

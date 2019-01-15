@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface EmpresaRepository extends CrudRepository<Empresa, Integer> {
 
-    @Query("SELECT e FROM Empresa e WHERE UPPER(e.nomeEmpresa) LIKE %:term% OR UPPER(e.nomeLogradouro) LIKE %:term% ORDER BY e.nomeEmpresa")
+    @Query("SELECT e FROM Empresa e WHERE UPPER(e.nomeEmpresa) LIKE %:term% ORDER BY e.nomeEmpresa")
     Optional<List<Empresa>> find(@Param("term") String term);
 }
