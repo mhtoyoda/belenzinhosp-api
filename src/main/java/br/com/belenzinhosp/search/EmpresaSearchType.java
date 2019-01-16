@@ -32,6 +32,7 @@ public class EmpresaSearchType implements TypeSearch {
                 result.setHorarioAbertura(empresa.getHoraAbertura() != null ? empresa.getHoraAbertura() : "");
                 result.setHorarioFechamento(empresa.getHoraFechamento() != null ? empresa.getHoraFechamento() : "");
                 result.setUrl(empresa.getWebsiteEmpresa() != null ? empresa.getWebsiteEmpresa() : "");
+                result.setRedeSocial(empresa.getFbEmpresa() != null ? empresa.getFbEmpresa() : "");
                 results.add(result);
             });
         }

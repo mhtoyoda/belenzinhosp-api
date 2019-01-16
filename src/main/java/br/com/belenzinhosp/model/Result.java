@@ -18,6 +18,7 @@ public class Result {
     private String horarioAbertura;
     private String horarioFechamento;
     private String url;
+    private String redeSocial;
 
     public String getNome() {
         return nome;
@@ -121,5 +122,13 @@ public class Result {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getRedeSocial() {
+        return redeSocial;
+    }
+
+    public void setRedeSocial(String redeSocial) {
+        this.redeSocial = redeSocial;
     }
 }

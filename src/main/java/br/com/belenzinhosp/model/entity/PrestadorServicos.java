@@ -15,8 +15,8 @@ public class PrestadorServicos {
     @Column(name = "nome_prestador")
     private String name;
 
-    @Column(name = "lograd_prestador")
-    private Integer nomeLogradouro;
+    @Column(name = "lograd_prestador",  columnDefinition = "LONGTEXT")
+    private String nomeLogradouro;
 
     @Column(name = "num_prestador")
     private String numero;
@@ -46,6 +46,15 @@ public class PrestadorServicos {
     @Column(name = "dt_cad_prestador", columnDefinition = "DATETIME")
     private Date dataCadastroPrestador;
 
+    @Column(name = "linkedin_prestador")
+    private String linkedinPrestador;
+
+    @Column(name = "fb_prestador")
+    private String facebookPrestador;
+
+    @Column(name = "website_prestador")
+    private String websitePrestador;
+
     @Column(name = "obs_prestador")
     private String observacao;
 
@@ -65,11 +74,11 @@ public class PrestadorServicos {
         this.name = name;
     }
 
-    public Integer getNomeLogradouro() {
+    public String getNomeLogradouro() {
         return nomeLogradouro;
     }
 
-    public void setNomeLogradouro(Integer nomeLogradouro) {
+    public void setNomeLogradouro(String nomeLogradouro) {
         this.nomeLogradouro = nomeLogradouro;
     }
 
@@ -143,6 +152,30 @@ public class PrestadorServicos {
 
     public void setDataCadastroPrestador(Date dataCadastroPrestador) {
         this.dataCadastroPrestador = dataCadastroPrestador;
+    }
+
+    public String getLinkedinPrestador() {
+        return linkedinPrestador;
+    }
+
+    public void setLinkedinPrestador(String linkedinPrestador) {
+        this.linkedinPrestador = linkedinPrestador;
+    }
+
+    public String getFacebookPrestador() {
+        return facebookPrestador;
+    }
+
+    public void setFacebookPrestador(String facebookPrestador) {
+        this.facebookPrestador = facebookPrestador;
+    }
+
+    public String getWebsitePrestador() {
+        return websitePrestador;
+    }
+
+    public void setWebsitePrestador(String websitePrestador) {
+        this.websitePrestador = websitePrestador;
     }
 
     public String getObservacao() {

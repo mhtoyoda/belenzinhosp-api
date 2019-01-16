@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface PrestadorServicosRepository extends CrudRepository<PrestadorServicos, Integer> {
 
-    @Query("SELECT p FROM PrestadorServicos p WHERE UPPER(p.name) LIKE %:term% ORDER BY p.name")
+    @Query("SELECT p FROM PrestadorServicos p WHERE UPPER(p.name) LIKE %:term% ORDER BY p.name ASC")
     Optional<List<PrestadorServicos>> findPrestadorServicos(@Param("term") String term);
 }
