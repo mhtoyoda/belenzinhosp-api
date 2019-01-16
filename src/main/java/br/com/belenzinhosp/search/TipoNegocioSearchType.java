@@ -3,6 +3,7 @@ package br.com.belenzinhosp.search;
 import br.com.belenzinhosp.model.Result;
 import br.com.belenzinhosp.model.entity.Empresa;
 import br.com.belenzinhosp.repository.EmpresaRepository;
+import br.com.belenzinhosp.util.UrlUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +32,7 @@ public class TipoNegocioSearchType implements TypeSearch {
                 result.setTelefone(empresa.getTelefone1() != null ? empresa.getTelefone1() : empresa.getTelefone2());
                 result.setHorarioAbertura(empresa.getHoraAbertura() != null ? empresa.getHoraAbertura() : "");
                 result.setHorarioFechamento(empresa.getHoraFechamento() != null ? empresa.getHoraFechamento() : "");
-                result.setUrl(empresa.getWebsiteEmpresa() != null ? empresa.getWebsiteEmpresa() : "");
+                result.setUrl(empresa.getWebsiteEmpresa() != null ? UrlUtil.convertUrl(empresa.getWebsiteEmpresa()) : "");
                 results.add(result);
             });
         }
