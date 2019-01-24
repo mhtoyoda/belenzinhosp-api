@@ -1,11 +1,11 @@
 package br.com.belenzinhosp.model.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "noticias")
 public class Noticias {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,12 @@ public class Noticias {
 
     @Column(name = "manchete_news")
     private String machete;
+
+    @Column(name = "website_news")
+    private String website;
+
+    @Column(name = "telefone_news")
+    private String telefone;
 
     @Lob
     @Column(name = "corpo_news", columnDefinition = "LONGTEXT")
@@ -30,6 +36,14 @@ public class Noticias {
 
     @Column(name = "obs_news")
     private String observacao;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_entrada", columnDefinition = "DATETIME")
+    private Date dateEntrada;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_bloqueio", columnDefinition = "DATETIME")
+    private Date dateBloqueio;
 
     public Integer getId() {
         return id;
@@ -53,6 +67,22 @@ public class Noticias {
 
     public void setMachete(String machete) {
         this.machete = machete;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getCorpo() {
@@ -85,5 +115,21 @@ public class Noticias {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Date getDateEntrada() {
+        return dateEntrada;
+    }
+
+    public void setDateEntrada(Date dateEntrada) {
+        this.dateEntrada = dateEntrada;
+    }
+
+    public Date getDateBloqueio() {
+        return dateBloqueio;
+    }
+
+    public void setDateBloqueio(Date dateBloqueio) {
+        this.dateBloqueio = dateBloqueio;
     }
 }

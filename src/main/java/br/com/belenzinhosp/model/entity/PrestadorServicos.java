@@ -58,6 +58,9 @@ public class PrestadorServicos {
     @Column(name = "obs_prestador")
     private String observacao;
 
+    @Column(name = "Ativar")
+    private String ativacao;
+
     public Integer getId() {
         return id;
     }
@@ -184,5 +187,13 @@ public class PrestadorServicos {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public String getAtivacao() {
+        return ativacao;
+    }
+
+    public void setAtivacao(String ativacao) {
+        this.ativacao = ativacao;
     }
 }
