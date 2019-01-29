@@ -24,13 +24,12 @@ public class Banners {
     @Column(name = "tel_banner")
     private String telefone;
 
-    @Lob
-    @Column(name = "imagem_banner", columnDefinition = "LONGBLOB")
-    private byte[] imagem;
+    @Column(name = "imagem_banner")
+    private String imagem;
 
     @Lob
     @Column(name = "link_banner", columnDefinition = "LONGTEXT")
-    private String link;
+    private byte[] link;
 
     @Column(name = "obs_banner")
     private String observacao;
@@ -45,6 +44,10 @@ public class Banners {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dtsai_banner", columnDefinition = "DATETIME")
     private Date dateSaida;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_cad_banner", columnDefinition = "DATETIME")
+    private Date dateCadastro;
 
     public Integer getId() {
         return id;
@@ -86,19 +89,19 @@ public class Banners {
         this.telefone = telefone;
     }
 
-    public byte[] getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(byte[] imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
-    public String getLink() {
+    public byte[] getLink() {
         return link;
     }
 
-    public void setLink(String link) {
+    public void setLink(byte[] link) {
         this.link = link;
     }
 
@@ -132,5 +135,13 @@ public class Banners {
 
     public void setDateSaida(Date dateSaida) {
         this.dateSaida = dateSaida;
+    }
+
+    public Date getDateCadastro() {
+        return dateCadastro;
+    }
+
+    public void setDateCadastro(Date dateCadastro) {
+        this.dateCadastro = dateCadastro;
     }
 }
