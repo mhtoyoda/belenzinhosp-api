@@ -7,6 +7,7 @@ import br.com.belenzinhosp.model.entity.PrestadorServicos;
 import br.com.belenzinhosp.repository.AtividadePrestadorRepository;
 import br.com.belenzinhosp.repository.LogradouroRepository;
 import br.com.belenzinhosp.repository.PrestadorServicosRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,40 +30,68 @@ public class PrestadorServicoService {
 
     public PrestadorServicos cadastrarPrestador(PrestadorResource prestadorResource) {
         PrestadorServicos prestadorServicos = new PrestadorServicos();
-        prestadorServicos.setAtivacao("Não");
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date dateCadastro = dateFormat.parse(prestadorResource.getDataCadastroPrestador());
-            prestadorServicos.setDataCadastroPrestador(dateCadastro);
-        } catch (ParseException e) {
-            prestadorServicos.setDataCadastroPrestador(new Date());
-        }
-
-        if(prestadorResource.getAtividadePrestadorId() != null){
-            Optional<AtividadePrestador> atividadePrestador = atividadePrestadorRepository.findById(Integer.parseInt(prestadorResource.getAtividadePrestadorId()));
-            if(atividadePrestador.isPresent()){
-                prestadorServicos.setAtividadePrestadorId(atividadePrestador.get().getId());
+        try{
+            prestadorServicos.setAtivacao("Não");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date dateCadastro = dateFormat.parse(prestadorResource.getDataCadastroPrestador());
+                prestadorServicos.setDataCadastroPrestador(dateCadastro);
+            } catch (ParseException e) {
+                prestadorServicos.setDataCadastroPrestador(new Date());
             }
-        }
 
-        if(prestadorResource.getLogradouroId() != null){
-            Optional<Logradouro> logradouro = logradouroRepository.findById(Integer.parseInt(prestadorResource.getLogradouroId()));
-            if(logradouro.isPresent()){
-                prestadorServicos.setNomeLogradouro(logradouro.get().getName());
+            if(prestadorResource.getAtividadePrestadorId() != null){
+                Optional<AtividadePrestador> atividadePrestador = atividadePrestadorRepository.findById(Integer.parseInt(prestadorResource.getAtividadePrestadorId()));
+                if(atividadePrestador.isPresent()){
+                    prestadorServicos.setAtividadePrestadorId(atividadePrestador.get().getId());
+                }
             }
-        }
-        prestadorServicos.setNumero(prestadorResource.getNumero());
+
+            if(prestadorResource.getLogradouroId() != null){
+                Optional<Logradouro> logradouro = logradouroRepository.findById(Integer.parseInt(prestadorResource.getLogradouroId()));
+                if(logradouro.isPresent()){
+                    prestadorServicos.setNomeLogradouro(String.valueOf(logradouro.get().getId()));
+                }
+            }
 //        prestadorServicos.setBairro();
 //        prestadorServicos.setCep();
-        prestadorServicos.setTelefone(prestadorResource.getTelefone());
-        prestadorServicos.setCelular(prestadorResource.getCelular());
-        prestadorServicos.setCpf(prestadorResource.getCpf());
-        prestadorServicos.setFacebookPrestador(prestadorResource.getFacebookPrestador());
-        prestadorServicos.setLinkedinPrestador(prestadorResource.getLinkedinPrestador());
-        prestadorServicos.setWebsitePrestador(prestadorResource.getWebsitePrestador());
-        prestadorServicos.setObservacao(prestadorResource.getObservacao());
-        prestadorServicos = prestadorServicosRepository.save(prestadorServicos);
+            prestadorServicos.setName(prestadorResource.getName());
+            prestadorServicos.setNumero(prestadorResource.getNumero());
+            if(StringUtils.isNotBlank(prestadorResource.getTelefone())){
+                String telefone = prestadorResource.getTelefone();
+                if(StringUtils.length(telefone) == 10){
+                    String prefixo = StringUtils.substring(telefone, 0, 2);
+                    String inicio = StringUtils.substring(telefone, 2, 6);
+                    String fim = StringUtils.substring(telefone, 6, 10);
+                    prestadorServicos.setTelefone(String.format("%s-%s-%s", prefixo, inicio, fim));
+                }else{
+                    prestadorServicos.setTelefone(telefone);
+                }
+            }
+            if(StringUtils.isNotBlank(prestadorResource.getCelular())){
+                String celular = prestadorResource.getCelular();
+                if(StringUtils.length(celular) == 11){
+                    String prefixo = StringUtils.substring(celular, 0, 2);
+                    String inicio = StringUtils.substring(celular, 2, 7);
+                    String fim = StringUtils.substring(celular, 7, 11);
+                    prestadorServicos.setCelular(String.format("%s-%s-%s", prefixo, inicio, fim));
+                }else{
+                    prestadorServicos.setCelular(celular);
+                }
+            }
+            if(StringUtils.isNotBlank(prestadorResource.getCpf())){
+                String cpf = StringUtils.remove(prestadorResource.getCpf(), ".");
+                cpf = StringUtils.remove(cpf, "-");
+                prestadorServicos.setCpf(cpf);
+            }
+            prestadorServicos.setFacebookPrestador(prestadorResource.getFacebookPrestador());
+            prestadorServicos.setLinkedinPrestador(prestadorResource.getLinkedinPrestador());
+            prestadorServicos.setWebsitePrestador(prestadorResource.getWebsitePrestador());
+            prestadorServicos.setObservacao(prestadorResource.getObservacao());
+            prestadorServicos = prestadorServicosRepository.save(prestadorServicos);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return prestadorServicos;
     }
 }

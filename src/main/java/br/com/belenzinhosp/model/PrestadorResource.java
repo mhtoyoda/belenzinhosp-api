@@ -4,7 +4,7 @@ public class PrestadorResource {
 
     private String name;
 
-    private String LogradouroId;
+    private String logradouroId;
 
     private String numero;
 
@@ -16,8 +16,6 @@ public class PrestadorResource {
 
     private String celular;
 
-    private String avaliaPrestador;
-
     private String dataCadastroPrestador;
 
     private String linkedinPrestador;
@@ -28,6 +26,8 @@ public class PrestadorResource {
 
     private String observacao;
 
+    private boolean sucess;
+
     public String getName() {
         return name;
     }
@@ -37,11 +37,11 @@ public class PrestadorResource {
     }
 
     public String getLogradouroId() {
-        return LogradouroId;
+        return logradouroId;
     }
 
     public void setLogradouroId(String logradouroId) {
-        LogradouroId = logradouroId;
+        this.logradouroId = logradouroId;
     }
 
     public String getNumero() {
@@ -84,14 +84,6 @@ public class PrestadorResource {
         this.celular = celular;
     }
 
-    public String getAvaliaPrestador() {
-        return avaliaPrestador;
-    }
-
-    public void setAvaliaPrestador(String avaliaPrestador) {
-        this.avaliaPrestador = avaliaPrestador;
-    }
-
     public String getDataCadastroPrestador() {
         return dataCadastroPrestador;
     }
@@ -130,5 +122,13 @@ public class PrestadorResource {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public boolean isSucess() {
+        return sucess;
+    }
+
+    public void setSucess(boolean sucess) {
+        this.sucess = sucess;
     }
 }
