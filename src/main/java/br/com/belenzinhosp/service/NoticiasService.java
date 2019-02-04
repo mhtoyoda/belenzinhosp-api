@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class NoticiasService {
@@ -15,10 +16,12 @@ public class NoticiasService {
     @Autowired
     private NoticiasRepository noticiasRepository;
 
-    public List<Noticias> getAll(Integer qtde){
+    public List<Noticias> getNoticiasActives(){
         List<Noticias> list = new ArrayList<>();
-        Iterable<Noticias> noticias = noticiasRepository.findAll();
-        list = Lists.newArrayList(noticias);
+        Optional<List<Noticias>> noticiasActives = noticiasRepository.findNoticiasActives();
+        if(noticiasActives.isPresent()){
+            list = Lists.newArrayList(noticiasActives.get());
+        }
         return list;
     }
 }
