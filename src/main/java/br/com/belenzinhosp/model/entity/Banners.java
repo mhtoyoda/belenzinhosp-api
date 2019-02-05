@@ -29,7 +29,7 @@ public class Banners {
 
     @Lob
     @Column(name = "link_banner", columnDefinition = "LONGTEXT")
-    private byte[] link;
+    private String link;
 
     @Column(name = "obs_banner")
     private String observacao;
@@ -97,11 +97,11 @@ public class Banners {
         this.imagem = imagem;
     }
 
-    public byte[] getLink() {
+    public String getLink() {
         return link;
     }
 
-    public void setLink(byte[] link) {
+    public void setLink(String link) {
         this.link = link;
     }
 

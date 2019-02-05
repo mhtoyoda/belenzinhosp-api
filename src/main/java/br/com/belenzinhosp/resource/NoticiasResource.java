@@ -23,6 +23,8 @@ public class NoticiasResource {
         if (!list.isEmpty()) {
             if (list.size() > 3) {
                 noticias = list.subList(0, 2);
+            }else{
+                noticias = list;
             }
         }
         return ResponseEntity.ok(noticias);
