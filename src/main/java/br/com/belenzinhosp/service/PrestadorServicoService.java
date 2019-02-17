@@ -28,6 +28,9 @@ public class PrestadorServicoService {
     @Autowired
     private LogradouroRepository logradouroRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     public PrestadorServicos cadastrarPrestador(PrestadorResource prestadorResource) {
         PrestadorServicos prestadorServicos = new PrestadorServicos();
         try{
@@ -53,8 +56,7 @@ public class PrestadorServicoService {
                     prestadorServicos.setNomeLogradouro(String.valueOf(logradouro.get().getId()));
                 }
             }
-//        prestadorServicos.setBairro();
-//        prestadorServicos.setCep();
+
             prestadorServicos.setName(prestadorResource.getName());
             prestadorServicos.setNumero(prestadorResource.getNumero());
             if(StringUtils.isNotBlank(prestadorResource.getTelefone())){
@@ -89,9 +91,18 @@ public class PrestadorServicoService {
             prestadorServicos.setWebsitePrestador(prestadorResource.getWebsitePrestador());
             prestadorServicos.setObservacao(prestadorResource.getObservacao());
             prestadorServicos = prestadorServicosRepository.save(prestadorServicos);
+            sendEmailNotification(prestadorServicos);
         }catch (Exception e){
             e.printStackTrace();
         }
         return prestadorServicos;
+    }
+
+    private void sendEmailNotification(PrestadorServicos prestadorServicos){
+        try {
+            emailService.sendEmail("belenzinhosp@terra.com.br", "Cadastro de Prestador de Serviços", prestadorServicos.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

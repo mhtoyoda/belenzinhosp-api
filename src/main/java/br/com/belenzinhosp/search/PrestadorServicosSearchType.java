@@ -2,11 +2,9 @@ package br.com.belenzinhosp.search;
 
 import br.com.belenzinhosp.model.Result;
 import br.com.belenzinhosp.model.entity.AtividadePrestador;
-import br.com.belenzinhosp.model.entity.Empresa;
 import br.com.belenzinhosp.model.entity.Logradouro;
 import br.com.belenzinhosp.model.entity.PrestadorServicos;
 import br.com.belenzinhosp.repository.AtividadePrestadorRepository;
-import br.com.belenzinhosp.repository.EmpresaRepository;
 import br.com.belenzinhosp.repository.LogradouroRepository;
 import br.com.belenzinhosp.repository.PrestadorServicosRepository;
 import br.com.belenzinhosp.util.UrlUtil;

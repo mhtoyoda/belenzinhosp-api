@@ -33,6 +33,7 @@ public class TipoNegocioSearchType implements TypeSearch {
                 result.setHorarioAbertura(empresa.getHoraAbertura() != null ? empresa.getHoraAbertura() : "");
                 result.setHorarioFechamento(empresa.getHoraFechamento() != null ? empresa.getHoraFechamento() : "");
                 result.setUrl(empresa.getWebsiteEmpresa() != null ? UrlUtil.convertUrl(empresa.getWebsiteEmpresa()) : "");
+                result.setAtividade(empresa.getNomeAtividadeComercial());
                 results.add(result);
             });
         }

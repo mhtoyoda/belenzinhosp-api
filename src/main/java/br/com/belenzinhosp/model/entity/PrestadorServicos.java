@@ -196,4 +196,27 @@ public class PrestadorServicos {
     public void setAtivacao(String ativacao) {
         this.ativacao = ativacao;
     }
+
+    @Override
+    public String toString() {
+        return "Prestador de Servicos{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", nomeLogradouro='" + nomeLogradouro + '\'' +
+                ", numero='" + numero + '\'' +
+                ", cep='" + cep + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", atividadePrestadorId=" + atividadePrestadorId +
+                ", telefone='" + telefone + '\'' +
+                ", celular='" + celular + '\'' +
+                ", avaliaPrestador='" + avaliaPrestador + '\'' +
+                ", dataCadastroPrestador=" + dataCadastroPrestador +
+                ", linkedinPrestador='" + linkedinPrestador + '\'' +
+                ", facebookPrestador='" + facebookPrestador + '\'' +
+                ", websitePrestador='" + websitePrestador + '\'' +
+                ", observacao='" + observacao + '\'' +
+                ", ativacao='" + ativacao + '\'' +
+                '}';
+    }
 }

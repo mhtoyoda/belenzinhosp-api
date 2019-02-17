@@ -34,6 +34,7 @@ public class EmpresaSearchType implements TypeSearch {
                 result.setHorarioFechamento(empresa.getHoraFechamento() != null ? empresa.getHoraFechamento() : "");
                 result.setUrl(empresa.getWebsiteEmpresa() != null ? UrlUtil.convertUrl(empresa.getWebsiteEmpresa()) : "");
                 result.setRedeSocial(empresa.getFbEmpresa() != null ? UrlUtil.convertUrl(empresa.getFbEmpresa()) : "");
+                result.setAtividade(empresa.getNomeAtividadeComercial());
                 results.add(result);
             });
         }
