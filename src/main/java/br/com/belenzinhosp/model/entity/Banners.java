@@ -49,6 +49,9 @@ public class Banners {
     @Column(name = "dt_cad_banner", columnDefinition = "DATETIME")
     private Date dateCadastro;
 
+    @Column(name = "int_ext_banner")
+    private String sourceBanner;
+
     public Integer getId() {
         return id;
     }
@@ -143,5 +146,13 @@ public class Banners {
 
     public void setDateCadastro(Date dateCadastro) {
         this.dateCadastro = dateCadastro;
+    }
+
+    public String getSourceBanner() {
+        return sourceBanner;
+    }
+
+    public void setSourceBanner(String sourceBanner) {
+        this.sourceBanner = sourceBanner;
     }
 }
