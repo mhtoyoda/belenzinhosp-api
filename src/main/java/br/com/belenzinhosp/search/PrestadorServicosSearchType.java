@@ -44,8 +44,10 @@ public class PrestadorServicosSearchType implements TypeSearch {
                 result.setNome(prestadorServico.getName());
                 Optional<AtividadePrestador> atividadePrestador = atividadePrestadorRepository.findById(prestadorServico.getAtividadePrestadorId());
                 result.setAtividade(atividadePrestador.isPresent() ? atividadePrestador.get().getName() : "");
-                Optional<Logradouro> logradouro = logradouroRepository.findById(Integer.parseInt(prestadorServico.getNomeLogradouro()));
-                result.setEndereco(logradouroUtil.getEndereco(logradouro.isPresent() ? logradouro.get().getName() : "", prestadorServico.getNumero()));
+                if(StringUtils.isNotBlank(prestadorServico.getNomeLogradouro())){
+                    Optional<Logradouro> logradouro = logradouroRepository.findById(Integer.parseInt(prestadorServico.getNomeLogradouro()));
+                    result.setEndereco(logradouroUtil.getEndereco(logradouro.isPresent() ? logradouro.get().getName() : "", prestadorServico.getNumero()));
+                }
                 result.setTelefone(prestadorServico.getTelefone() != null ? prestadorServico.getTelefone() : "");
                 result.setCelular(prestadorServico.getCelular() != null ? prestadorServico.getCelular() : "");
                 result.setCep(prestadorServico.getCep() != null ? prestadorServico.getCep() : "");
