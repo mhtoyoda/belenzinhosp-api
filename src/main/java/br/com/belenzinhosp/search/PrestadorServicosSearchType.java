@@ -7,6 +7,7 @@ import br.com.belenzinhosp.model.entity.PrestadorServicos;
 import br.com.belenzinhosp.repository.AtividadePrestadorRepository;
 import br.com.belenzinhosp.repository.LogradouroRepository;
 import br.com.belenzinhosp.repository.PrestadorServicosRepository;
+import br.com.belenzinhosp.util.LogradouroUtil;
 import br.com.belenzinhosp.util.UrlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class PrestadorServicosSearchType implements TypeSearch {
     @Autowired
     private AtividadePrestadorRepository atividadePrestadorRepository;
 
+    @Autowired
+    private LogradouroUtil logradouroUtil;
+
     @Override
     public List<Result> findByType(String term) {
         List<Result> results = new ArrayList<>();
@@ -41,7 +45,7 @@ public class PrestadorServicosSearchType implements TypeSearch {
                 Optional<AtividadePrestador> atividadePrestador = atividadePrestadorRepository.findById(prestadorServico.getAtividadePrestadorId());
                 result.setAtividade(atividadePrestador.isPresent() ? atividadePrestador.get().getName() : "");
                 Optional<Logradouro> logradouro = logradouroRepository.findById(Integer.parseInt(prestadorServico.getNomeLogradouro()));
-                result.setEndereco(getEndereco(logradouro.isPresent() ? logradouro.get().getName() : "", prestadorServico.getNumero()));
+                result.setEndereco(logradouroUtil.getEndereco(logradouro.isPresent() ? logradouro.get().getName() : "", prestadorServico.getNumero()));
                 result.setTelefone(prestadorServico.getTelefone() != null ? prestadorServico.getTelefone() : "");
                 result.setCelular(prestadorServico.getCelular() != null ? prestadorServico.getCelular() : "");
                 result.setCep(prestadorServico.getCep() != null ? prestadorServico.getCep() : "");
@@ -52,13 +56,5 @@ public class PrestadorServicosSearchType implements TypeSearch {
             });
         }
         return results;
-    }
-
-    private String getEndereco(String logradouro, String numero) {
-        if(StringUtils.isNotBlank(logradouro)){
-            String[] logradouros = logradouro.split(",");
-            return String.format("%s %s, %s", logradouros[1], logradouros[0], numero);
-        }
-        return "";
     }
 }
