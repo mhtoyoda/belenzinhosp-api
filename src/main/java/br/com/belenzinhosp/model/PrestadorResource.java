@@ -131,4 +131,21 @@ public class PrestadorResource {
     public void setSucess(boolean sucess) {
         this.sucess = sucess;
     }
+
+    @Override
+    public String toString() {
+        return  "\n"+
+                "name='" + name + '\n' +
+                "nomeLogradouro=" + logradouroId + '\n' +
+                "numero=" + numero + '\n' +
+                "cpf=" + cpf + '\n' +
+                "atividadePrestadorId=" + atividadePrestadorId + '\n' +
+                "telefone=" + telefone + '\n' +
+                "celular=" + celular + '\n' +
+                "dataCadastroPrestador=" + dataCadastroPrestador + '\n' +
+                "linkedinPrestador=" + linkedinPrestador + '\n' +
+                "facebookPrestador=" + facebookPrestador + '\n' +
+                "websitePrestador=" + websitePrestador + '\n' +
+                "observacao=" + observacao + '\n';
+    }
 }

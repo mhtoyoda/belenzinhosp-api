@@ -19,7 +19,7 @@ public class BannersResource {
     public ResponseEntity<List<Banners>> bannersLeft() {
         List<Banners> banners = bannersService.findBannerLeftActives();
         if (!banners.isEmpty()) {
-            if (banners.size() > 3) {
+            if (banners.size() > 2) {
                 banners = banners.subList(0, 2);
             }
         }
@@ -30,8 +30,8 @@ public class BannersResource {
     public ResponseEntity<List<Banners>> bannersRight() {
         List<Banners> banners = bannersService.findBannerRightActives();
         if (!banners.isEmpty()) {
-            if (banners.size() > 1) {
-                banners = banners.subList(0, 0);
+            if (banners.size() > 2) {
+                banners = banners.subList(0, 2);
             }
         }
         return ResponseEntity.ok(banners);

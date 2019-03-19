@@ -15,8 +15,8 @@ public class PrestadorServicos {
     @Column(name = "nome_prestador")
     private String name;
 
-    @Column(name = "lograd_prestador",  columnDefinition = "LONGTEXT")
-    private String nomeLogradouro;
+    @Column(name = "lograd_prestador")
+    private Integer nomeLogradouro;
 
     @Column(name = "num_prestador")
     private String numero;
@@ -77,11 +77,11 @@ public class PrestadorServicos {
         this.name = name;
     }
 
-    public String getNomeLogradouro() {
+    public Integer getNomeLogradouro() {
         return nomeLogradouro;
     }
 
-    public void setNomeLogradouro(String nomeLogradouro) {
+    public void setNomeLogradouro(Integer nomeLogradouro) {
         this.nomeLogradouro = nomeLogradouro;
     }
 

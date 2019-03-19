@@ -53,7 +53,7 @@ public class PrestadorServicoService {
             if(prestadorResource.getLogradouroId() != null){
                 Optional<Logradouro> logradouro = logradouroRepository.findById(Integer.parseInt(prestadorResource.getLogradouroId()));
                 if(logradouro.isPresent()){
-                    prestadorServicos.setNomeLogradouro(String.valueOf(logradouro.get().getId()));
+                    prestadorServicos.setNomeLogradouro(logradouro.get().getId());
                 }
             }
 
