@@ -11,9 +11,9 @@ import java.util.Optional;
 @Repository
 public interface BannersRepository extends CrudRepository<Banners, Integer> {
 
-    @Query("SELECT b FROM Banners b WHERE UPPER(b.liberaBanner) = 'SIM' AND b.localBanner IN (1,2,3) ORDER BY b.id DESC")
+    @Query("SELECT b FROM Banners b WHERE UPPER(b.liberaBanner) = 'SIM' AND b.localBanner IN (1,2) ORDER BY b.id DESC")
     Optional<List<Banners>> findBannerLeftActives();
 
-    @Query("SELECT b FROM Banners b WHERE UPPER(b.liberaBanner) = 'SIM' AND b.localBanner IN (4) ORDER BY b.id DESC")
+    @Query("SELECT b FROM Banners b WHERE UPPER(b.liberaBanner) = 'SIM' AND b.localBanner IN (3,4) ORDER BY b.id DESC")
     Optional<List<Banners>> findBannerRightActives();
 }
