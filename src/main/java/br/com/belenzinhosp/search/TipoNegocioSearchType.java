@@ -33,11 +33,13 @@ public class TipoNegocioSearchType implements TypeSearch {
                 result.setNome(empresa.getNomeEmpresa());
                 result.setNomeFantasia(empresa.getNomeEmpresa());
                 result.setEndereco(logradouroUtil.getEndereco(empresa.getNomeLogradouro(), empresa.getNumero()));
-                result.setTelefone(empresa.getTelefone1() != null ? empresa.getTelefone1() : empresa.getTelefone2());
+                result.setTelefone(empresa.getTelefone1());
+                result.setTelefone2(empresa.getTelefone2());
                 result.setHorarioAbertura(empresa.getHoraAbertura() != null ? empresa.getHoraAbertura() : "");
                 result.setHorarioFechamento(empresa.getHoraFechamento() != null ? empresa.getHoraFechamento() : "");
                 result.setUrl(empresa.getWebsiteEmpresa() != null ? UrlUtil.convertUrl(empresa.getWebsiteEmpresa()) : "");
                 result.setAtividade(empresa.getNomeAtividadeComercial());
+                result.setRedeSocial(empresa.getFbEmpresa() != null ? UrlUtil.convertUrl(empresa.getFbEmpresa()) : "");
                 results.add(result);
             });
         }
