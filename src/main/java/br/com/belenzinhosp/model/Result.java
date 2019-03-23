@@ -14,11 +14,13 @@ public class Result {
     private String atividade;
     private String dataCadastro;
     private String telefone;
+    private String telefone2;
     private String celular;
     private String horarioAbertura;
     private String horarioFechamento;
     private String url;
     private String redeSocial;
+    private String website;
 
     public String getNome() {
         return nome;
@@ -96,6 +98,14 @@ public class Result {
         return celular;
     }
 
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
     public void setCelular(String celular) {
         this.celular = celular;
     }
@@ -130,5 +140,13 @@ public class Result {
 
     public void setRedeSocial(String redeSocial) {
         this.redeSocial = redeSocial;
+    }
+
+    public String getTelefone2() {
+        return telefone2;
+    }
+
+    public void setTelefone2(String telefone2) {
+        this.telefone2 = telefone2;
     }
 }

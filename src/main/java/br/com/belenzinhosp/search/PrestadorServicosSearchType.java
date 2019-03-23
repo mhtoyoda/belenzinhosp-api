@@ -54,6 +54,7 @@ public class PrestadorServicosSearchType implements TypeSearch {
                 result.setBairro(prestadorServico.getBairro() != null ? prestadorServico.getBairro() : "");
                 result.setCpf(prestadorServico.getCpf() != null ? prestadorServico.getCpf() : "");
                 result.setRedeSocial(prestadorServico.getFacebookPrestador() != null ? UrlUtil.convertUrl(prestadorServico.getFacebookPrestador()) : "");
+                result.setWebsite(prestadorServico.getWebsitePrestador() != null ? UrlUtil.convertUrl(prestadorServico.getWebsitePrestador()) : "");
                 results.add(result);
             });
         }
